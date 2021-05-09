@@ -9,6 +9,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     application
+
 }
 
 repositories {
@@ -23,10 +24,16 @@ dependencies {
     // This dependency is used by the application.
     implementation("com.google.guava:guava:30.0-jre")
 
-		implementation("com.graphql-java:graphql-java:11.0")
+    implementation("com.graphql-java:graphql-java:11.0")
 
-		implementation("org.apache.logging.log4j:log4j-api:2.14.1")
-		implementation("org.apache.logging.log4j:log4j-core:2.14.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.14.1")
+    implementation("org.apache.logging.log4j:log4j-core:2.14.1")
+
+    implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.12.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.12.3")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.12.3")
+
+    implementation("org.yaml:snakeyaml:1.28")
 }
 
 application {

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+	<Properties>
+		<Property name="ptn">%d{yyyy-MM-dd HH:mm:ss.SSS} p=%-5p c=%c t=%t C=%C F=%F M=%M L=%L m=%m %n</Property>
+	</Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+		<RollingFile name="file" fileName="log/log4j2.log"
+			filePattern="log/%d{yyyyMM}/log4j2_%d{yyyyMMdd}_%i.log">
+			<PatternLayout pattern="${ptn}" />
+			<Policies>
+				<OnStartupTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="2 MB" />
+				<TimeBasedTriggeringPolicy />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+        <Syslog name="syslog" host="192.168.1.11" port="514" protocol="UDP" />
+    </Appenders>
+    <Loggers>
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="syslog"/>
+            <AppenderRef ref="file"/>
+        </Root>
+    </Loggers>
+</Configuration>
